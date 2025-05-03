@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>SA Electricals - Welding Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-primary text-white d-none d-lg-flex wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-3">
+            <div class="d-flex align-items-center">
+                <a href="index.html">
+                    <img style="height: 5rem;" src="img/WhatsApp Image 2025-04-28 at 14.36.46_56cda2b5.jpg" alt="">
+                </a>
+                <div class="ms-auto d-flex align-items-center">
+                    <small class="ms-4"><i class="fa fa-map-marker-alt me-3"></i>RT Nagar,Bengaluru - 560 032</small>
+                    <small class="ms-4">
+                        <i class="fa fa-envelope me-3"></i>
+                        <a href="mailto:info@saelectricals.co.in"
+                            class="text-light text-decoration-none">info@saelectricals.co.in</a>
+                    </small>
+                    <small class="ms-4"><i class="fa fa-phone-alt me-3"></i>9844081178</small>
+                    <div class="ms-3 d-flex">
+                        <a class="btn btn-sm-square btn-light text-primary ms-2" href=""><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-sm-square btn-light text-primary ms-2" href=""><i
+                                class="fab fa-twitter"></i></a>
+                        <a class="btn btn-sm-square btn-light text-primary ms-2" href=""><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+    <!-- Navbar Start -->
+    <div class="container-fluid bg-white sticky-top wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg bg-white navbar-light p-lg-0">
+                <a href="index.html" class="navbar-brand d-lg-none">
+                    <h1 class="fw-bold m-0">SA Electricals</h1>
+                </a>
+                <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav">
+                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="about.html" class="nav-item nav-link">About</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
+                            <div class="dropdown-menu bg-light rounded-0 rounded-bottom m-0">
+                                <a href="machanical.html" class="dropdown-item">Mechanical</a>
+                                <a href="electrical.html" class="dropdown-item">Electrical</a>
+                                <a href="plumbling.html" class="dropdown-item">Plumbing</a>
+                                <a href="firesafety.html" class="dropdown-item">Fire Safety</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    </div>
+                    <div class="ms-auto d-none d-lg-block">
+                        <a href="" class="btn btn-primary py-2 px-3">Get A Quote</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Service Start -->
+    <style>
+        .service-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            max-width: 1200px;
+        }
+
+        .image-box {
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            background-color: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .image-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.4s ease;
+        }
+
+        .image-box .content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: #000;
+            background-color: rgba(255, 255, 255, 0.85);
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .image-box:hover img,
+        .image-box.show img {
+            opacity: 0.3;
+        }
+
+        .image-box:hover .content,
+        .image-box.show .content {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .image-box h5 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .image-box p {
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        @media screen and (max-width: 768px) {
+            .image-box {
+                height: 220px;
+            }
+
+            .image-box h5 {
+                font-size: 1rem;
+            }
+
+            .image-box p {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .image-box {
+                height: 200px;
+            }
+
+            .image-box .content {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+
+    <!-- Service Grid -->
+    <div class="service-wrapper">
+        <div class="image-box">
+            <img src="https://cdn.pixabay.com/photo/2017/10/14/22/26/water-pipe-2852047_1280.jpg
+ " alt="Turnkey Construction">
+            <div class="content">
+                <h5>Pipe Installation:</h5>
+                <p>  Installing piping systems for water, gas, and waste.
+
+                </p>
+            </div>
+        </div>
+        <div class="image-box">
+            <img src="https://cdn.pixabay.com/photo/2015/07/11/14/53/plumbing-840835_1280.jpg
+            " alt="Architecture & Interior">
+            <div class="content">
+                <h5> Leak Detection and Repair: </h5>
+                <p> Detecting and repairing leaks in plumbing systems.
+
+                </p>
+            </div>
+        </div>
+        <div class="image-box">
+            <img src=" https://imgs.search.brave.com/iLq4K8pOi3m6E1arPJOVpKeTHuqrNhmnD-m59fR-bW0/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9yZXMu/Y2xvdWRpbmFyeS5j/b20vbGlhaXNvbi1p/bmMvaW1hZ2UvdXBs/b2FkL2ZfYXV0by9x/X2F1dG8sd18xMjAw/L3YxNjU4MTc3NjAw/L2NvbnRlbnQvaG9t/ZWd1aWRlL2hvbWVn/dWlkZS1zdWItc3Vy/ZmFjZS15YXJkLWRy/YWluYWdlLXN5c3Rl/bS1pbnN0YWxsYXRp/b25faXBjZGxzLmpw/Zw
+            " alt="Civil Construction">
+            <div class="content">
+                <h5>  Drainage System Installation:  </h5>
+                <p>  Installing and maintaining drainage systems.
+
+                </p>
+            </div>
+        </div>
+        <div class="image-box">
+            <img src=" https://cdn.pixabay.com/photo/2017/08/23/10/22/tubing-2672187_1280.jpg
+            " alt="POP Ceiling & Kitchen">
+            <div class="content">
+                <h5> Water Heater Installation: </h5>
+                <p>Installing and maintaining water heaters.
+
+                </p>
+            </div>
+        </div>
+        <div class="image-box">
+            <img src="https://imgs.search.brave.com/R0XhN2cc53ODK06J2J1xkQSmCQWdEBtLGyN3iMAC85Q/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/aWRlc2lnbmFjLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAy/NC8wNC9QbHVtYmlu/Zy1yZXBhaXIuanBn
+            " alt="Home Automation">
+            <div class="content">
+                <h5> Plumbing Maintenance: </h5>
+                <p>Maintaining and repairing plumbing systems.
+
+                    </p>
+            </div>
+        </div>
+        <div class="image-box">
+            <img src=" https://cdn.pixabay.com/photo/2023/11/07/13/57/faucet-8372443_1280.jpg
+            " alt="Lift & HVAC">
+            <div class="content">
+                <h5>Bathroom and Kitchen Fitting:</h5>
+                <p>Fitting bathrooms and kitchens with plumbing fixtures.
+
+                </p>
+            </div>
+        </div>
+        <div class="image-box">
+            <img src="https://imgs.search.brave.com/buEPGM5O49LKRlNw8bn9Iaq1KKeRFScIYL3qnOD44mQ/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93cC5j/dWxsaWdhbi5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMjQv/MDEvV2F0ZXJfU29m/dG5lcl9Db21iby01/LTQucG5nP3F1YWxp/dHk9ODA
+            " alt="Lift & HVAC">
+            <div class="content">
+                <h5>Water Treatment Solutions:</h5>
+                <p>Providing water treatment solutions for clean water.
+
+                </p>
+            </div>
+        </div>
+        <div class="image-box">
+            <img src="https://imgs.search.brave.com/9L6crIQRTHkFvjU0n7Ep3Am8E3-Sovr19HgVoiyWcdg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jb250/ZW50Z3JpZC5ob21l/ZGVwb3Qtc3RhdGlj/LmNvbS9oZHVzL2Vu/X1VTL0RUQ0NPTU5F/Vy9BcnRpY2xlcy90/eXBlcy1vZi1maXR0/aW5ncy1mb3ItZ2Fz/LWFuZC13YXRlci1w/aXBlcy0yMDIyLXNl/Y3Rpb24tMS5qcGc
+            " alt="Lift & HVAC">
+            <div class="content">
+                <h5> Gas Fitting:</h5>
+                <p> Installing and maintaining gas piping systems.
+
+
+                </p>
+            </div>
+        </div>
+        <div class="image-box">
+            <img src="https://imgs.search.brave.com/U2PQJvxl0bqzKW0PTMPAdshqfOU4aPw5_40ChN7qvY8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Z3VzdGF3YXRlci5j/b20vdXBkYXRlL2Js/b2cvc2V3YWdlLXN5/c3RlbS9zZXdhZ2Ut/c3lzdGVtLmpwZw
+            " alt="Lift & HVAC">
+            <div class="content">
+                <h5> Sewerage System Installation.
+                </h5>
+                <p>Installing and maintaining sewerage systems.
+
+
+
+                </p>
+            </div>
+        </div>
+        <div class="image-box">
+            <img src="https://media.istockphoto.com/id/935739140/photo/maintenance-and-service-wrench-and-project-drawings-with-plumbing-system.jpg?s=1024x1024&w=is&k=20&c=HhIrSxAenUs40Ii5zfnE81lER30BasTYhRTYdHgr3u0= " alt="Lift & HVAC">
+            <div class="content">
+                <h5> Plumbing System Design
+                </h5>
+                <p>Designing plumbing systems for buildings and industries.
+
+
+
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS to Enable Tap-to-Reveal on Mobile -->
+    <script>
+        document.querySelectorAll('.image-box').forEach(box => {
+            box.addEventListener('click', function () {
+                // Remove "show" from all other boxes
+                document.querySelectorAll('.image-box').forEach(b => {
+                    if (b !== box) b.classList.remove('show');
+                });
+                // Toggle this one
+                box.classList.toggle('show');
+            });
+        });
+
+        // Optional: Close content when clicking outside
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.image-box')) {
+                document.querySelectorAll('.image-box').forEach(box => box.classList.remove('show'));
+            }
+        });
+    </script>
+
+
+    </div>
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark footer py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-uppercase text-light mb-4">Our Office</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>#600,21st cross, 1st block, RT
+                        Nagar,Bengaluru - 560 032 </p>
+                    <p class="mb-2"><i class="fa fa-phone-alt text-primary me-3"></i>9844081178</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt text-primary me-3"></i>9008311119</p>
+
+                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"><a
+                                href="mailto:info@saelectricals.co.in" class="text-light text-decoration-none">
+                                info@saelectricals.co.in</a></i></p>
+                    <div class="d-flex pt-3">
+                        <a class="btn btn-square btn-light me-2" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-light me-2" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-light me-2" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-square btn-light me-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-uppercase text-light mb-4">Quick Links</h5>
+                    <a class="btn btn-link" href="about.html">About Us</a>
+                    <a class="btn btn-link" href="contact.html">Contact Us</a>
+                    <a class="btn btn-link" href="service.html">Our Services</a>
+                    <a class="btn btn-link" href="index.html">Terms & Condition</a>
+                    <a class="btn btn-link" href="index.html">Support</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-uppercase text-light mb-4">Business Hours</h5>
+                    <p class="text-uppercase mb-0">Monday - Friday</p>
+                    <p>09:00 am - 07:00 pm</p>
+                    <p class="text-uppercase mb-0">Saturday</p>
+                    <p>09:00 am - 12:00 pm</p>
+                    <p class="text-uppercase mb-0">Sunday</p>
+                    <p>Closed</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-uppercase text-light mb-4">Gallery</h5>
+                    <div class="row g-1">
+                        <div class="col-4">
+                            <img class="img-fluid" src="img/service-1.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid" src="img/service-2.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid" src="img/service-3.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid" src="img/service-4.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid" src="img/service-5.jpg" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid" src="img/service-6.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Copyright Start -->
+    <div class="container-fluid text-body copyright py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="fw-semi-bold" href="#">Your Site Name</a>, All Right Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                    Designed By <a class="fw-semi-bold" href="">Aspiron Khuze Technologies Pvt Ltd</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
