@@ -107,16 +107,15 @@
 .navbar .navbar-nav .nav-link {
     margin-right: 35px;
     padding: 25px 0;
-    color: var(--bs-dark);
+    color: white !important;
     font-size: 16px;
     text-transform: uppercase;
     font-weight: 600;
     outline: none;
 }
 
-.navbar .navbar-nav .nav-link:hover,
-.navbar .navbar-nav .nav-link.active {
-    color: var(--bs-primary);
+.navbar .navbar-nav .nav-link:hover {
+    color: #d5a252 !important;
 }
 
 .navbar .dropdown-toggle::after {

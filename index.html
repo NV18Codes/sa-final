@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/sa_logo-removebg-preview.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,6 +36,44 @@
             object-fit: cover;
             width: 100%;
         }
+        /* This is the main container that holds all the flip cards */
+        .health-container {
+            display: flex;          /* Use flexbox for alignment */
+            flex-wrap: wrap;        /* CRITICAL: Allows cards to wrap to the next line */
+            justify-content: center;/* CRITICAL: Centers the cards on each line */
+            gap: 2rem;              /* Adds a nice space between the cards */
+            padding: 1rem;          /* Adds some space around the container */
+        }
+
+        /* This controls the size of each individual card */
+        /* NOTE: You probably have other styles for .flip-card, .flip-card-inner, etc. 
+           Keep those! Just add this new CSS to your existing styles. */
+        .flip-card {
+            flex-basis: 30%;        /* Sets the base width for each card to fit 3 in a row */
+            min-width: 300px;       /* Prevents cards from becoming too small on some screens */
+            /* Keep your other .flip-card styles like height, perspective, etc. here */
+        }
+
+        /* For smaller screens (like tablets and phones), stack the cards */
+        @media (max-width: 992px) {
+            .flip-card {
+                flex-basis: 45%; /* On medium screens, show 2 cards per row */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .flip-card {
+                flex-basis: 80%; /* On small screens, show 1 card per row */
+            }
+        }
+
+        /* NEW CODE ADDED HERE TO FIX MOBILE NAVBAR HEADING SIZE */
+        @media (max-width: 991.98px) {
+            .navbar-brand.d-lg-none h3 {
+                font-size: 15px !important; /* Sets the font size to 15px */
+            }
+        }
+    
     </style>
 </head>
 
@@ -53,16 +91,18 @@
         <div class="container py-3">
             <div class="d-flex align-items-center">
                 <a href="index.html">
-                    <img style="height: 5rem;" src="img/WhatsApp Image 2025-04-28 at 14.36.46_56cda2b5.jpg" alt="">
+                    <img style="height: 5rem;" src="img/sa_logo-removebg-preview.png" alt="">
                 </a>
+                <h5 style="color:#91180f ;">SA ELECTRICALS <br><span>keeping you powered-since 1980</span></h5>
                 <div class="ms-auto d-flex align-items-center">
-                    <small class="ms-4"><i class="fa fa-map-marker-alt me-3"></i>RT Nagar,Bengaluru - 560 032</small>
+                    <!-- <small class="ms-4"><i class="fa fa-map-marker-alt me-3"></i>RT Nagar,Bengaluru - 560 032</small> -->
                     <small class="ms-4">
                         <i class="fa fa-envelope me-3"></i>
-                        <a href="mailto:info@saelectricals.co.in"
-                            class="text-light text-decoration-none">info@saelectricals.co.in</a>
+                        <a href="mailto:info@saelectricals.co.in" class="text-light text-decoration-none"
+                            style="color:#91180f !important ;">info@saelectricals.co.in</a>
                     </small>
-                    <small class="ms-4"><i class="fa fa-phone-alt me-3"></i>9844081178</small>
+                    <small class="ms-4" style="color: #91180f !important;"><i class="fa fa-phone-alt me-3"
+                            style="color:#91180f !important ;"></i>9008311119 , 9844081178</small>
                     <div class="ms-3 d-flex">
                         <a class="btn btn-sm-square btn-light text-primary ms-2" href=""><i
                                 class="fab fa-facebook-f"></i></a>
@@ -83,7 +123,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light p-lg-0">
                 <a href="index.html" class="navbar-brand d-lg-none">
-                    <h1 class="fw-bold m-0">SA Electricals</h1>
+                    <h3 style="color:white ;">SA ELECTRICALS <br><span>keeping you powered-since 1980</span></h3>
                 </a>
                 <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse">
@@ -100,50 +140,82 @@
                                 <a href="electrical.html" class="dropdown-item">Electrical</a>
                                 <a href="plumbling.html" class="dropdown-item">Plumbing</a>
                                 <a href="firesafety.html" class="dropdown-item">Fire Safety</a>
+                                <a href="thermography.html" class="dropdown-item">Other Services</a>
                             </div>
                         </div>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="ms-auto d-none d-lg-block">
-<a href="quote.pdf" download class="btn btn-primary py-2 px-3">Get A Quote</a>
+                        <a href="quote.pdf" download class="btn btn-primary py-2 px-3">Get A Quote</a>
                     </div>
                 </div>
             </nav>
         </div>
     </div>
     <!-- Navbar End -->
-<!-- Appointment Modal Popup -->
+    <!-- Appointment Modal Popup -->
 <div id="appointmentModal" class="modal">
     <div class="modal-content">
-        <span class="close-btn" id="closeModalBtn">&times;</span>
-        <h2>Get A Quote</h2>
+        <div class="modal-header">
+            <h2 class="modal-title">Get a Professional Quote</h2>
+            <span class="close-btn" id="closeModalBtn">&times;</span>
+        </div>
         <form id="appointmentForm" action="https://formsubmit.co/your-email@example.com" method="POST">
-            <!-- Hidden Inputs -->
+            <!-- Hidden Inputs for FormSubmit.co -->
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
 
             <!-- Form Fields -->
-            <input type="text" name="Full Name" placeholder="Full Name" required>
-            <input type="email" name="Email" placeholder="Email Address" required>
-            <input type="tel" name="Phone" placeholder="Phone Number" required>
-            <!-- <input type="date" name="Appointment Date" required> -->
-            <select name="Service" required>
-                <option value="">Select Service</option>
-                <option value="Interior">Machanical</option>
-                <option value="Customized Furniture">Electrical</option>
-                <option value="Exteriors">Plumbing</option>
-                <option value="Exteriors">firesafety</option>
-            </select>
-            <textarea name="Message" placeholder="Additional Message (optional)"></textarea>
-            <button type="submit">Submit</button>
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input id="fullName" type="text" name="Full Name" placeholder="Your Full Name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input id="email" type="email" name="Email" placeholder="Your Email Address" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">10-Digit Mobile Number</label>
+                <input 
+                    id="phone" 
+                    type="tel" 
+                    name="Phone" 
+                    placeholder="e.g., 9876543210" 
+                    required
+                    pattern="[6-9][0-9]{9}"
+                    maxlength="10"
+                    title="Please enter a valid 10-digit Indian mobile number">
+            </div>
+            <div class="form-group">
+                <label for="service">Service of Interest</label>
+                <select id="service" name="Service" required>
+                    <option value="" disabled selected>Select a service</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="Electrical">Electrical</option>
+                    <option value="Plumbing">Plumbing</option>
+                    <option value="Fire Safety">Fire Safety</option>
+                </select>
+            </div>
+            <div class="form-group">
+                 <label for="message">Message <span class="optional">(Optional)</span></label>
+                <textarea id="message" name="Message" placeholder="Tell us about your project..." rows="2"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit Request</button>
         </form>
     </div>
 </div>
 
 <!-- CSS Styling -->
 <style>
+    /* Import a professional, modern font */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+    
     .modal {
-        display: none;
+        display: none; 
         position: fixed;
         z-index: 9999;
         left: 0;
@@ -151,74 +223,132 @@
         width: 100%;
         height: 100%;
         overflow: auto;
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: rgba(44, 62, 80, 0.7); /* Dark, desaturated overlay */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
     }
 
     .modal-content {
-        background-color: #fff;
-        margin: 10% auto;
-        padding: 2rem;
-        border-radius: 12px;
-        width: 90%;
-        max-width: 450px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        background-color: #ffffff;
+        margin: auto;
+        padding: 25px 30px;
+        border-radius: 12px; /* Softer radius */
+        width: 100%;
+        max-width: 380px; /* Compact size */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         position: relative;
-        animation: fadeIn 0.3s ease-in-out;
+        animation: slideIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
-    .modal-content h2 {
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-        color: #333;
+    .modal-header {
         text-align: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #e0e6ed;
+        padding-bottom: 15px;
+    }
+    
+    .modal-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #2c3e50; /* Dark charcoal text */
     }
 
-    .modal-content form {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 2.2rem;
+        font-weight: 300;
+        color: #95a5a6; /* Light grey */
+        cursor: pointer;
+        line-height: 1;
+        transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .close-btn:hover {
+        color: #2c3e50;
+        transform: rotate(90deg);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #34495e; /* Muted dark blue/grey */
+    }
+    
+    .form-group .optional {
+        color: #7f8c8d; /* Lighter grey for optional text */
+        font-weight: 400;
     }
 
     .modal-content input,
     .modal-content select,
     .modal-content textarea {
-        padding: 0.75rem;
-        border-radius: 6px;
-        border: 1px solid #ccc;
-        font-size: 1rem;
         width: 100%;
+        padding: 10px 14px;
+        border-radius: 8px;
+        border: 1px solid #dce4ec;
+        background-color: #f7f9fb; /* Soft off-white background */
+        font-size: 0.95rem;
+        color: #2c3e50;
+        transition: all 0.2s ease-in-out;
     }
 
-    .modal-content button[type="submit"] {
-        background-color: #007bff;
+    .modal-content input::placeholder,
+    .modal-content textarea::placeholder {
+        color: #95a5a6;
+    }
+
+    .modal-content input:focus,
+    .modal-content select:focus,
+    .modal-content textarea:focus {
+        outline: none;
+        border-color: #1abc9c; /* Teal focus color */
+        box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.15);
+        background-color: #fff;
+    }
+    
+    .modal-content select {
+        appearance: none;
+        background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%237f8c8d"%3E%3Cpath d="M7 10l5 5 5-5H7z"/%3E%3C/svg%3E');
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        background-size: 20px;
+    }
+
+    .submit-btn {
+        background: linear-gradient(to right, #16a085, #1abc9c); /* Teal gradient */
         color: white;
-        padding: 0.75rem;
+        width: 100%;
+        padding: 12px;
         border: none;
-        border-radius: 6px;
+        border-radius: 8px;
         cursor: pointer;
         font-size: 1rem;
-        margin-top: 0.5rem;
+        font-weight: 600;
+        margin-top: 10px;
+        box-shadow: 0 4px 15px rgba(22, 160, 133, 0.2);
+        transition: all 0.2s ease-in-out;
+    }
+    
+    .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(22, 160, 133, 0.3);
     }
 
-    .close-btn {
-        position: absolute;
-        top: 12px;
-        right: 18px;
-        font-size: 1.5rem;
-        color: #999;
-        cursor: pointer;
-    }
-
-    .close-btn:hover {
-        color: #333;
-    }
-
-    @keyframes fadeIn {
+    @keyframes slideIn {
         from {
             opacity: 0;
             transform: translateY(-20px);
         }
-
         to {
             opacity: 1;
             transform: translateY(0);
@@ -226,33 +356,37 @@
     }
 </style>
 
-<!-- JavaScript -->
+<!-- JavaScript (Correct and Unchanged) -->
 <script>
-    const modal = document.getElementById("appointmentModal");
-    const closeBtn = document.getElementById("closeModalBtn");
+    document.addEventListener("DOMContentLoaded", function() {
+        const modal = document.getElementById("appointmentModal");
+        const closeBtn = document.getElementById("closeModalBtn");
 
-    // Show modal on page load
-    window.onload = () => {
-        modal.style.display = "block";
-    };
+        if (modal && closeBtn) {
+            // Show modal on page load
+            modal.style.display = "flex";
 
-    // Close modal on X click
-    closeBtn.onclick = () => {
-        modal.style.display = "none";
-    };
+            const closeModal = () => {
+                modal.style.display = "none";
+            };
 
-    // Close modal when clicking outside
-    window.onclick = (event) => {
-        if (event.target == modal) {
-            modal.style.display = "none";
+            // Close modal when 'X' is clicked
+            closeBtn.addEventListener("click", closeModal);
+
+            // Close modal when clicking outside
+            window.addEventListener("click", (event) => {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
         }
-    };
-    </script>
-<!-- end appointment pop up  -->
+    });
+</script>
+    <!-- end appointment pop up  -->
     <!-- Carousel Start -->
     <div class="container-fluid p-0 mb-6 wow fadeIn" data-wow-delay="0.1s">
-            <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
-                <!-- <div class="carousel-indicators">
+        <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+            <!-- <div class="carousel-indicators">
                     <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="0" class="active"
                         aria-current="true" aria-label="Slide 1">
                         <img class="img-fluid" src="img/carosel/111111.jpg" alt="Image">
@@ -273,70 +407,70 @@
                         <img class="img-fluid" src="img/carosel/444444444444.jpg" alt="Image">
                     </button>
                 </div> -->
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="w-100 carousel-img" src="img/carosel/111111.jpg" alt="Image">
-                        <div class="carousel-caption">
-                            <h1 class="display-1 text-uppercase text-white mb-4 animated zoomIn">Powering Your World,
-                                Electrically.
-                            </h1>
-                            <a href="about.html" class="btn btn-primary py-3 px-4">Explore More</a>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="w-100 carousel-img" src="img/carosel/2222222.jpg" alt="Image">
-                        <div class="carousel-caption">
-                            <h1 class="display-1 text-uppercase text-white mb-4 animated zoomIn">Empowering Homes,
-                                Energizing Industries.
-                            </h1>
-                            <a href="about.html" class="btn btn-primary py-3 px-4">Explore More</a>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="w-100 carousel-img" src="img/carosel/pexels-pixabay-257736.jpg" alt="Image">
-                        <div class="carousel-caption">
-                            <h1 class="display-1 text-uppercase text-white mb-4 animated zoomIn">Wired for Excellence.
-                            </h1>
-                            <a href="about.html" class="btn btn-primary py-3 px-4">Explore More</a>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="w-100 carousel-img" src="img/carosel/pexels-pixabay-371936.jpg" alt="Image">
-                        <div class="carousel-caption">
-                            <h1 class="display-1 text-uppercase text-white mb-4 animated zoomIn">Innovation That Sparks
-                                Life.
-                            </h1>
-                            <a href="about.html" class="btn btn-primary py-3 px-4">Explore More</a>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="w-100 carousel-img" src="img/carosel/3333333.jpg" alt="Image">
-                        <div class="carousel-caption">
-                            <h1 class="display-1 text-uppercase text-white mb-4 animated zoomIn">From Source to Socket,
-                                We've Got You Covered.
-                            </h1>
-                            <a href="about.html" class="btn btn-primary py-3 px-4">Explore More</a>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="w-100 carousel-img" src="img/carosel/444444444444.jpg" alt="Image">
-                        <div class="carousel-caption">
-                            <h1 class="display-1 text-uppercase text-white mb-4 animated zoomIn">Reliable Energy. Unmatched
-                                Performance
-                            </h1>
-                            <a href="about.html" class="btn btn-primary py-3 px-4">Explore More</a>
-                        </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100 carousel-img" src="img/carosel/111111.jpg" alt="Image">
+                    <div class="carousel-caption">
+                        <h1 class="display-1 text-uppercase text-white mb-4 animated zoomIn">Powering Your World,
+                            Electrically.
+                        </h1>
+                        <a href="about.html" class="btn btn-primary py-3 px-4">Explore More</a>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+                <div class="carousel-item">
+                    <img class="w-100 carousel-img" src="img/carosel/2222222.jpg" alt="Image">
+                    <div class="carousel-caption">
+                        <h1 class="display-1 text-uppercase text-white mb-4 animated zoomIn">Empowering Homes,
+                            Energizing Industries.
+                        </h1>
+                        <a href="about.html" class="btn btn-primary py-3 px-4">Explore More</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100 carousel-img" src="img/carosel/pexels-pixabay-257736.jpg" alt="Image">
+                    <div class="carousel-caption">
+                        <h1 class="display-1 text-uppercase text-white mb-4 animated zoomIn">Wired for Excellence.
+                        </h1>
+                        <a href="about.html" class="btn btn-primary py-3 px-4">Explore More</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100 carousel-img" src="img/carosel/pexels-pixabay-371936.jpg" alt="Image">
+                    <div class="carousel-caption">
+                        <h1 class="display-1 text-uppercase text-white mb-4 animated zoomIn">Innovation That Sparks
+                            Life.
+                        </h1>
+                        <a href="about.html" class="btn btn-primary py-3 px-4">Explore More</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100 carousel-img" src="img/carosel/3333333.jpg" alt="Image">
+                    <div class="carousel-caption">
+                        <h1 class="display-1 text-uppercase text-white mb-4 animated zoomIn">From Source to Socket,
+                            We've Got You Covered.
+                        </h1>
+                        <a href="about.html" class="btn btn-primary py-3 px-4">Explore More</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100 carousel-img" src="img/carosel/444444444444.jpg" alt="Image">
+                    <div class="carousel-caption">
+                        <h1 class="display-1 text-uppercase text-white mb-4 animated zoomIn">Reliable Energy. Unmatched
+                            Performance
+                        </h1>
+                        <a href="about.html" class="btn btn-primary py-3 px-4">Explore More</a>
+                    </div>
+                </div>
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
     </div>
     <!-- Carousel End -->
 
@@ -353,10 +487,15 @@
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                     <h1 class="display-6 text-uppercase mb-4">S.A. ELECTRICAL <br> ELECTRICAL CONTRACTORS & ENGINEER
                     </h1>
-                    <p class="mb-4">S.A. ELECTRICAL is a trusted name in power solutions, offering expert services as
-                        Government Licensed ‘Class 1’ Electrical Contractors and Engineers. We specialize in delivering
-                        safe, reliable, and efficient electrical installations for residential, commercial, and
-                        industrial projects.</p>
+                    <p class="mb-4">As a <strong>Class 1 government-licensed contractor</strong> with a legacy dating
+                        back to 1980, S.A. Electricals is your single, trusted partner for comprehensive turnkey MEPF
+                        solutions. We bring this expertise to every residential, commercial, and industrial project,
+                        managing the entire lifecycle from initial design and <strong>CEIG approvals</strong> to the
+                        expert installation of complex <strong>High-Tension (HT) & Low-Tension (LT) systems</strong>,
+                        sub-stations, custom panel boards, and integrated plumbing and fire safety infrastructure. Our
+                        holistic, single-source approach guarantees a single point of accountability, ensuring your
+                        project is delivered with unparalleled safety, quality, and on-time completion while simplifying
+                        coordination and reducing total project cost from start to finish</p>
                     <div class="row g-5 mb-4">
                         <div class="col-sm-6">
                             <div class="d-flex align-items-center">
@@ -405,8 +544,10 @@
                             <h5 class="text-uppercase mb-3">Quality MEAF</h5>
                             <p>Quality MEAF ensures efficient material usage with accurate production planning.</p>
                             <a class="position-relative text-body text-uppercase small d-flex justify-content-between"
-                                href="contact.html"><b class="bg-white pe-3">Read More</b> <i
-                                    class="bi bi-arrow-right bg-white ps-3"></i></a>
+                                href="contact.html"><b class="bg-white pe-3"
+                                    style="background-color: white !important;">Read More</b> <i
+                                    class="bi bi-arrow-right bg-white ps-3"
+                                    style="background-color: white !important;"></i></a>
                         </div>
                     </div>
                 </div>
@@ -420,8 +561,10 @@
                             <p>Affordable pricing offers great value without compromising on product quality.
                             </p>
                             <a class="position-relative text-body text-uppercase small d-flex justify-content-between"
-                                href="contact.html"><b class="bg-white pe-3">Read More</b> <i
-                                    class="bi bi-arrow-right bg-white ps-3"></i></a>
+                                href="contact.html"><b class="bg-white pe-3"
+                                    style="background-color: white !important;">Read More</b> <i
+                                    class="bi bi-arrow-right bg-white ps-3"
+                                    style="background-color: white !important;"></i></a>
                         </div>
                     </div>
                 </div>
@@ -432,10 +575,13 @@
                         </div>
                         <div class="p-5 pt-0">
                             <h5 class="text-uppercase">Best Electrical</h5>
-                            <p>Best electricals deliver reliable performance, safety, and long-lasting durability always.</p>
+                            <p>Best electricals deliver reliable performance, safety, and long-lasting durability
+                                always.</p>
                             <a class="position-relative text-body text-uppercase small d-flex justify-content-between"
-                                href="contact.html"><b class="bg-white pe-3">Read More</b> <i
-                                    class="bi bi-arrow-right bg-white ps-3"></i></a>
+                                href="contact.html"><b class="bg-white pe-3"
+                                    style="background-color: white !important;">Read More</b> <i
+                                    class="bi bi-arrow-right bg-white ps-3"
+                                    style="background-color: white !important;"></i></a>
                         </div>
                     </div>
                 </div>
@@ -448,8 +594,10 @@
                             <h5 class="text-uppercase">Quality Tools</h5>
                             <p>Quality tools ensure precision, durability, and efficiency in every task.</p>
                             <a class="position-relative text-body text-uppercase small d-flex justify-content-between"
-                                href="contact.html"><b class="bg-white pe-3">Read More</b> <i
-                                    class="bi bi-arrow-right bg-white ps-3"></i></a>
+                                href="contact.html"><b class="bg-white pe-3"
+                                    style="background-color: white !important;">Read More</b> <i
+                                    class="bi bi-arrow-right bg-white ps-3"
+                                    style="background-color: white !important;"></i></a>
                         </div>
                     </div>
                 </div>
@@ -467,20 +615,21 @@
                     <div class="mt-5">
                         <h1 class="display-6 text-white text-uppercase mb-4 wow fadeIn" data-wow-delay="0.3s">Why You
                             should Choose Our <br>SA Electricals.</h1>
-                        <p class="text-light mb-4 wow fadeIn" data-wow-delay="0.4s">At S.A. Electricals, we bring Class
-                            1 government-licensed expertise to every project, ensuring top-tier safety, reliability, and
-                            precision. With years of experience in residential, commercial, and industrial electrical
-                            works, we deliver solutions you can trust.</p>
+                        <p class="text-light mb-4 wow fadeIn" data-wow-delay="0.4s">Since 1980, S.A. Electricals has
+                            built a legacy of excellence as a <strong>Class 1 government-licensed electrical contractor</strong>. We
+                            power residential, commercial, and industrial projects with an unwavering commitment to
+                            superior safety and flawless execution, delivering results engineered to last and a standard
+                            of quality you can trust.</p>
                         <div class="row g-4 pt-2 mb-4">
                             <div class="col-sm-6 wow fadeIn" data-wow-delay="0.4s">
                                 <div class="flex-column text-center border border-5 border-primary p-5">
-                                    <h1 class="text-white" data-toggle="counter-up">9999</h1>
+                                    <h1 class="text-white" data-toggle="counter-up">223</h1>
                                     <p class="text-white text-uppercase mb-0">Satisfied Clients</p>
                                 </div>
                             </div>
                             <div class="col-sm-6 wow fadeIn" data-wow-delay="0.5s">
                                 <div class="flex-column text-center border border-5 border-primary p-5">
-                                    <h1 class="text-white" data-toggle="counter-up">9999</h1>
+                                    <h1 class="text-white" data-toggle="counter-up">126</h1>
                                     <p class="text-white text-uppercase mb-0">Complete Projects</p>
                                 </div>
                             </div>
@@ -518,137 +667,160 @@
     <!-- Service Start -->
     <style>
         .health-container {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin: auto;
-          gap: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            gap: 2rem;
         }
-    
+
         .flip-card {
-          background-color: transparent;
-          width: 300px;
-          height: 300px;
-          perspective: 1000px;
+            background-color: transparent;
+            width: 300px;
+            height: 300px;
+            perspective: 1000px;
         }
-    
+
         .flip-card-inner {
-          position: relative;
-          width: 100%;
-          height: 100%;
-          text-align: center;
-          transition: transform 0.6s;
-          transform-style: preserve-3d;
-          box-shadow: 0 4px 8px 0 #91180f;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px 0 #91180f;
         }
-    
+
         .flip-card:hover .flip-card-inner {
-          transform: rotateY(180deg);
+            transform: rotateY(180deg);
         }
-    
+
         .flip-card-front,
         .flip-card-back {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
         }
-    
+
         .flip-card-front {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-color: white;
-          color: white;
-          padding: .5rem;
-        }
-    
-        .flip-card-back {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: .5rem;
-          background-color: #91180f;
-          color: white;
-          transform: rotateY(180deg);
-        }
-    
-        @media screen and (max-width:850px) {
-          .health-container {
             display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-          }
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            color: white;
+            padding: .5rem;
         }
-      </style>
-      <div
-        style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: auto; width: 70%; margin-top: 3rem; margin-bottom: 3rem;">
-        <h1>
-          Services [M.E.P.F]
-        </h1>
-        <p>
-            We provide end-to-end MEPF solutions, ensuring efficient mechanical, electrical, plumbing, and fire safety systems with expert planning, seamless execution, and strict adherence to safety standards and deadlines.
-        </p>
-      </div>
-      <div class="health-container">
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <h1>Machanical</h1>
-            </div>
-            <div style="display: flex; flex-direction: column;" class="flip-card-back">
-              <p>We deliver reliable mechanical solutions with precision engineering, on-time execution, and a strong focus on safety and performance.
 
-              </p>
-              <a style="background-color: white; padding: .5rem;" href="service.html"><span>know more</span></a>
-              <!-- <p>We love that guy</p> -->
-            </div>
-          </div>
-        </div>
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <h1>Electrical</h1>
-            </div>
-            <div style="display: flex; flex-direction: column;" class="flip-card-back">
-              <p>We provide efficient electrical solutions with certified expertise, ensuring timely completion, safety, and high-quality performance every time.</p>
-              <a style="background-color: white; padding: .5rem;" href="service.html"><span>know more</span></a>
-            </div>
-          </div>
-        </div>
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <h1>Plumbing</h1>
-            </div>
-            <div style="display: flex; flex-direction: column;" class="flip-card-back">
-              <p>We offer reliable plumbing solutions with expert installation, quick service, and lasting quality for residential, commercial, and industrial needs.</p>
-              <!-- <p>We love that guy</p> -->
-              <a style="background-color: white; padding: .5rem;" href="service.html"><span>know more</span></a>
+        .flip-card-back {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: .5rem;
+            background-color: #91180f;
+            color: white;
+            transform: rotateY(180deg);
+        }
 
-            </div>
-          </div>
-          </div>
-        <div class="flip-card">
-          <div class="flip-card-inner">
+        @media screen and (max-width:850px) {
+            .health-container {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+    <div
+    style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: auto; width: 70%; margin-top: 3rem; margin-bottom: 3rem;">
+    <h1>
+        Our Core Services [M.E.P.F] & More
+    </h1>
+    <p>
+        We provide end-to-end MEPF solutions, ensuring efficient mechanical, electrical, plumbing, and fire safety
+        systems with expert planning, seamless execution, and strict adherence to safety standards and deadlines.
+    </p>
+</div>
+
+<!-- This is the container for all your cards -->
+<div class="health-container">
+
+    <!-- Card 1: Mechanical -->
+    <div class="flip-card">
+        <div class="flip-card-inner">
             <div class="flip-card-front">
-              <h1>Fire safety</h1>
+                <h1>Mechanical</h1>
             </div>
             <div style="display: flex; flex-direction: column;" class="flip-card-back">
-              <p>We provide certified fire safety solutions, ensuring protection through expert installation, timely service, and compliance with safety regulations.</p>
-              <!-- <p>We love that guy</p> -->
-              <a style="background-color: white; padding: .5rem;" href="service.html"><span>know more</span></a>
-
+                <p>We deliver reliable mechanical solutions with precision engineering, on-time execution, and a
+                    strong focus on safety and performance.
+                </p>
+                <a style="background-color: white; padding: .5rem;" href="service.html"><span>know more</span></a>
             </div>
-          </div>
         </div>
-      </div> <br> 
-    
-     
-      
-    
-      </div>
+    </div>
+
+    <!-- Card 2: Electrical -->
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <h1>Electrical</h1>
+            </div>
+            <div style="display: flex; flex-direction: column;" class="flip-card-back">
+                <p>We provide efficient electrical solutions with certified expertise, ensuring timely completion,
+                    safety, and high-quality performance every time.</p>
+                <a style="background-color: white; padding: .5rem;" href="service.html"><span>know more</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 3: Plumbing -->
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <h1>Plumbing</h1>
+            </div>
+            <div style="display: flex; flex-direction: column;" class="flip-card-back">
+                <p>We offer reliable plumbing solutions with expert installation, quick service, and lasting quality
+                    for all your residential and commercial needs.</p>
+                <a style="background-color: white; padding: .5rem;" href="service.html"><span>know more</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 4: Fire Safety -->
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <h1>Fire Safety</h1>
+            </div>
+            <div style="display: flex; flex-direction: column;" class="flip-card-back">
+                <p>We provide certified fire safety solutions, ensuring protection through expert installation,
+                    timely service, and full compliance with safety regulations.</p>
+                <a style="background-color: white; padding: .5rem;" href="service.html"><span>know more</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 5: Other Services (NEW) -->
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <h1>Other Services</h1>
+            </div>
+            <div style="display: flex; flex-direction: column;" class="flip-card-back">
+                <p>We provide integrated low-voltage solutions, including CCTV, networking, UPS installation, and comprehensive electrical audits to support modern infrastructure.</p>
+                <a style="background-color: white; padding: .5rem;" href="service.html"><span>know more</span></a>
+            </div>
+        </div>
+    </div>
+
+</div> <br>
+
+
+
+
+    </div>
     <!-- <div class="container-fluid service pt-6 pb-6">
         <div class="container">
             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
@@ -789,7 +961,8 @@
                         </div>
                         <div class="ms-3">
                             <h6 class="text-white text-uppercase">Office Address</h6>
-                            <span class="text-white">#600,21st cross, 1st block, RT Nagar,Bengaluru - 560 032 </span>
+                            <span class="text-white">No 36, 2nf floor, 10th Cross CBI Main Road Ganganagar North, Post,
+                                RT Nagar, Bengaluru, Karnataka 560032</span>
                         </div>
                     </div>
                     <hr class="bg-body">
@@ -805,7 +978,7 @@
                 </div>
                 <div class="col-lg-6 mb-n5 wow fadeIn" data-wow-delay="0.7s">
                     <div class="bg-white p-5">
-                        <h2 class="text-uppercase mb-4">Online Appoinment</h2>
+                        <h2 class="text-uppercase mb-4" style="color: white !important;">Online Appoinment</h2>
                         <div class="row g-3">
                             <div class="col-sm-6">
                                 <div class="form-floating">
@@ -831,10 +1004,11 @@
                             <div class="col-sm-6">
                                 <div class="form-floating">
                                     <select class="form-select border-0 bg-light" id="service">
-                                        <option selected>Machanical/option>
+                                        <option selected>Machanical</option>
                                         <option value="">Electrical</option>
                                         <option value="">Plumbing</option>
                                         <option value="">Fire safety</option>
+                                        <option value="">other Services</option>
                                     </select>
                                     <label for="service">Choose A Service</label>
                                 </div>
@@ -847,7 +1021,8 @@
                                 </div>
                             </div>
                             <div class="col-12 text-center">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Submit Now</button>
+                                <button class="btn btn-primary w-100 py-3" type="submit"
+                                    style="border: 2px white solid !important;">Submit Now</button>
                             </div>
                         </div>
                     </div>
@@ -859,7 +1034,7 @@
 
 
     <!-- Team Start -->
-    <div class="container-fluid team pt-6 pb-6">
+    <!-- <div class="container-fluid team pt-6 pb-6">
         <div class="container">
             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <h1 class="display-6 text-uppercase mb-5">Meet Our Professional and Experience Welder</h1>
@@ -935,7 +1110,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Team End -->
 
 
@@ -1075,44 +1250,46 @@
     <!-- Blog Section Start -->
     <section class="container py-5">
         <div class="text-center mb-5">
-            <h1 class="display-4 fw-bold">Our Latest Blogs</h1>
-            <p class="text-muted">Stay updated with our latest trends and ideas.</p>
+            <h1 class="display-4 fw-bold">Our Latest Insights</h1>
+            <p class="text-muted">Stay informed with the latest in electrical safety, efficiency, and technology.</p>
         </div>
         <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card shadow">
-                    <img src="https://cdn.pixabay.com/photo/2018/01/27/22/47/spiral-3112405_1280.jpg"
-                        class="card-img-top" alt="Blog 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Modern Architecture Trends</h5>
-                        <p class="card-text">Explore the latest trends in contemporary architecture and how they shape
-                            urban spaces.</p>
-                        <a href="#" class="btn btn-primary">Read More</a>
+            <!-- Blog Post 1 -->
+            <div class="col-md-4 d-flex">
+                <div class="card shadow h-100">
+                    <img src="https://rapidtradie.com.au/wp-content/uploads/sites/3/2018/04/5094731.jpg"
+                        class="card-img-top" alt="Electrical Safety Audit">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">The Critical Importance of an Electrical Safety Audit</h5>
+                        <p class="card-text">Learn how a professional electrical audit can prevent hazards, ensure
+                            compliance, and protect your home or business.</p>
+                        <a href="#" class="btn btn-primary mt-auto">Read More</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card shadow">
-                    <img src="https://cdn.pixabay.com/photo/2016/05/13/15/30/earth-1390199_1280.jpg"
-                        class="card-img-top" alt="Blog 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Eco-Friendly Constructions</h5>
-                        <p class="card-text">Discover how sustainable materials and green designs are revolutionizing
-                            construction.</p>
-                        <a href="#" class="btn btn-primary">Read More</a>
+            <!-- Blog Post 2 -->
+            <div class="col-md-4 d-flex">
+                <div class="card shadow h-100">
+                    <img src="https://tse4.mm.bing.net/th/id/OIP.lW3lMhjxsfmGDmsfqFYTKwHaEy?pid=Api&P=0&h=180"
+                        class="card-img-top" alt="Turnkey MEPF Solutions">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Why Choose a Turnkey MEPF Contractor?</h5>
+                        <p class="card-text">Discover the benefits of integrated MEPF services for reducing costs and
+                            simplifying project management.</p>
+                        <a href="#" class="btn btn-primary mt-auto">Read More</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card shadow">
-                    <img src="https://cdn.pixabay.com/photo/2018/10/15/21/59/smarthome-3750136_1280.jpg"
-                        class="card-img-top" alt="Blog 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Smart Home Integration</h5>
-                        <p class="card-text">Learn how smart technology is enhancing living experiences in modern
-                            homes.For an upgraded and secured living.
-                        </p>
-                        <a href="#" class="btn btn-primary">Read More</a>
+            <!-- Blog Post 3 -->
+            <div class="col-md-4 d-flex">
+                <div class="card shadow h-100">
+                    <img src="https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        class="card-img-top" alt="HT and LT Electrical Systems">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Powering Industry: Understanding HT & LT Systems</h5>
+                        <p class="card-text">An essential guide to High-Tension and Low-Tension electrical systems for
+                            commercial and industrial efficiency.</p>
+                        <a href="#" class="btn btn-primary mt-auto">Read More</a>
                     </div>
                 </div>
             </div>
@@ -1126,10 +1303,10 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-uppercase text-light mb-4">Our Office</h5>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>#600,21st cross, 1st block, RT
-                        Nagar,Bengaluru - 560 032 </p>
-                    <p class="mb-2"><i class="fa fa-phone-alt text-primary me-3"></i>9844081178</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>No 36, 2nf floor, 10th Cross
+                        CBI Main Road Ganganagar North, Post, RT Nagar, Bengaluru, Karnataka 560032</p>
                     <p class="mb-2"><i class="fa fa-phone-alt text-primary me-3"></i>9008311119</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt text-primary me-3"></i>9844081178</p>
 
                     <p class="mb-2"><i class="fa fa-envelope text-primary me-3"><a
                                 href="mailto:info@saelectricals.co.in" class="text-light text-decoration-none">
