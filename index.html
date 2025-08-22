@@ -8,6 +8,17 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WTF7NJRQ');</script>
+    <!-- End Google Tag Manager -->
+
     <!-- Favicon -->
     <link href="img/sa_logo-removebg-preview.png" rel="icon">
 
@@ -36,48 +47,64 @@
             object-fit: cover;
             width: 100%;
         }
+
         /* This is the main container that holds all the flip cards */
         .health-container {
-            display: flex;          /* Use flexbox for alignment */
-            flex-wrap: wrap;        /* CRITICAL: Allows cards to wrap to the next line */
-            justify-content: center;/* CRITICAL: Centers the cards on each line */
-            gap: 2rem;              /* Adds a nice space between the cards */
-            padding: 1rem;          /* Adds some space around the container */
+            display: flex;
+            /* Use flexbox for alignment */
+            flex-wrap: wrap;
+            /* CRITICAL: Allows cards to wrap to the next line */
+            justify-content: center;
+            /* CRITICAL: Centers the cards on each line */
+            gap: 2rem;
+            /* Adds a nice space between the cards */
+            padding: 1rem;
+            /* Adds some space around the container */
         }
 
         /* This controls the size of each individual card */
         /* NOTE: You probably have other styles for .flip-card, .flip-card-inner, etc. 
            Keep those! Just add this new CSS to your existing styles. */
         .flip-card {
-            flex-basis: 30%;        /* Sets the base width for each card to fit 3 in a row */
-            min-width: 300px;       /* Prevents cards from becoming too small on some screens */
+            flex-basis: 30%;
+            /* Sets the base width for each card to fit 3 in a row */
+            min-width: 300px;
+            /* Prevents cards from becoming too small on some screens */
             /* Keep your other .flip-card styles like height, perspective, etc. here */
         }
 
         /* For smaller screens (like tablets and phones), stack the cards */
         @media (max-width: 992px) {
             .flip-card {
-                flex-basis: 45%; /* On medium screens, show 2 cards per row */
+                flex-basis: 45%;
+                /* On medium screens, show 2 cards per row */
             }
         }
 
         @media (max-width: 768px) {
             .flip-card {
-                flex-basis: 80%; /* On small screens, show 1 card per row */
+                flex-basis: 80%;
+                /* On small screens, show 1 card per row */
             }
         }
 
         /* NEW CODE ADDED HERE TO FIX MOBILE NAVBAR HEADING SIZE */
         @media (max-width: 991.98px) {
             .navbar-brand.d-lg-none h3 {
-                font-size: 15px !important; /* Sets the font size to 15px */
+                font-size: 15px !important;
+                /* Sets the font size to 15px */
             }
         }
-    
     </style>
 </head>
 
 <body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTF7NJRQ" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <!-- Spinner Start -->
     <div id="spinner"
         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -154,234 +181,240 @@
     </div>
     <!-- Navbar End -->
     <!-- Appointment Modal Popup -->
-<div id="appointmentModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2 class="modal-title">Get a Professional Quote</h2>
-            <span class="close-btn" id="closeModalBtn">&times;</span>
+    <div id="appointmentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Get a Professional Quote</h2>
+                <span class="close-btn" id="closeModalBtn">&times;</span>
+            </div>
+            <form id="appointmentForm" action="https://formsubmit.co/your-email@example.com" method="POST">
+                <!-- Hidden Inputs for FormSubmit.co -->
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
+
+                <!-- Form Fields -->
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input id="fullName" type="text" name="Full Name" placeholder="Your Full Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input id="email" type="email" name="Email" placeholder="Your Email Address" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">10-Digit Mobile Number</label>
+                    <input id="phone" type="tel" name="Phone" placeholder="e.g., 9876543210" required
+                        pattern="[6-9][0-9]{9}" maxlength="10"
+                        title="Please enter a valid 10-digit Indian mobile number">
+                </div>
+                <div class="form-group">
+                    <label for="service">Service of Interest</label>
+                    <select id="service" name="Service" required>
+                        <option value="" disabled selected>Select a service</option>
+                        <option value="Mechanical">Mechanical</option>
+                        <option value="Electrical">Electrical</option>
+                        <option value="Plumbing">Plumbing</option>
+                        <option value="Fire Safety">Fire Safety</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message <span class="optional">(Optional)</span></label>
+                    <textarea id="message" name="Message" placeholder="Tell us about your project..."
+                        rows="2"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Request</button>
+            </form>
         </div>
-        <form id="appointmentForm" action="https://formsubmit.co/your-email@example.com" method="POST">
-            <!-- Hidden Inputs for FormSubmit.co -->
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
-
-            <!-- Form Fields -->
-            <div class="form-group">
-                <label for="fullName">Full Name</label>
-                <input id="fullName" type="text" name="Full Name" placeholder="Your Full Name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input id="email" type="email" name="Email" placeholder="Your Email Address" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">10-Digit Mobile Number</label>
-                <input 
-                    id="phone" 
-                    type="tel" 
-                    name="Phone" 
-                    placeholder="e.g., 9876543210" 
-                    required
-                    pattern="[6-9][0-9]{9}"
-                    maxlength="10"
-                    title="Please enter a valid 10-digit Indian mobile number">
-            </div>
-            <div class="form-group">
-                <label for="service">Service of Interest</label>
-                <select id="service" name="Service" required>
-                    <option value="" disabled selected>Select a service</option>
-                    <option value="Mechanical">Mechanical</option>
-                    <option value="Electrical">Electrical</option>
-                    <option value="Plumbing">Plumbing</option>
-                    <option value="Fire Safety">Fire Safety</option>
-                </select>
-            </div>
-            <div class="form-group">
-                 <label for="message">Message <span class="optional">(Optional)</span></label>
-                <textarea id="message" name="Message" placeholder="Tell us about your project..." rows="2"></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Submit Request</button>
-        </form>
     </div>
-</div>
 
-<!-- CSS Styling -->
-<style>
-    /* Import a professional, modern font */
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+    <!-- CSS Styling -->
+    <style>
+        /* Import a professional, modern font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
-    body {
-        font-family: 'Poppins', sans-serif;
-    }
-    
-    .modal {
-        display: none; 
-        position: fixed;
-        z-index: 9999;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(44, 62, 80, 0.7); /* Dark, desaturated overlay */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px;
-    }
-
-    .modal-content {
-        background-color: #ffffff;
-        margin: auto;
-        padding: 25px 30px;
-        border-radius: 12px; /* Softer radius */
-        width: 100%;
-        max-width: 380px; /* Compact size */
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        position: relative;
-        animation: slideIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-
-    .modal-header {
-        text-align: center;
-        margin-bottom: 20px;
-        border-bottom: 1px solid #e0e6ed;
-        padding-bottom: 15px;
-    }
-    
-    .modal-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: #2c3e50; /* Dark charcoal text */
-    }
-
-    .close-btn {
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        font-size: 2.2rem;
-        font-weight: 300;
-        color: #95a5a6; /* Light grey */
-        cursor: pointer;
-        line-height: 1;
-        transition: color 0.2s ease, transform 0.2s ease;
-    }
-
-    .close-btn:hover {
-        color: #2c3e50;
-        transform: rotate(90deg);
-    }
-
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-    .form-group label {
-        display: block;
-        margin-bottom: 6px;
-        font-size: 0.875rem;
-        font-weight: 500;
-        color: #34495e; /* Muted dark blue/grey */
-    }
-    
-    .form-group .optional {
-        color: #7f8c8d; /* Lighter grey for optional text */
-        font-weight: 400;
-    }
-
-    .modal-content input,
-    .modal-content select,
-    .modal-content textarea {
-        width: 100%;
-        padding: 10px 14px;
-        border-radius: 8px;
-        border: 1px solid #dce4ec;
-        background-color: #f7f9fb; /* Soft off-white background */
-        font-size: 0.95rem;
-        color: #2c3e50;
-        transition: all 0.2s ease-in-out;
-    }
-
-    .modal-content input::placeholder,
-    .modal-content textarea::placeholder {
-        color: #95a5a6;
-    }
-
-    .modal-content input:focus,
-    .modal-content select:focus,
-    .modal-content textarea:focus {
-        outline: none;
-        border-color: #1abc9c; /* Teal focus color */
-        box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.15);
-        background-color: #fff;
-    }
-    
-    .modal-content select {
-        appearance: none;
-        background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%237f8c8d"%3E%3Cpath d="M7 10l5 5 5-5H7z"/%3E%3C/svg%3E');
-        background-repeat: no-repeat;
-        background-position: right 14px center;
-        background-size: 20px;
-    }
-
-    .submit-btn {
-        background: linear-gradient(to right, #16a085, #1abc9c); /* Teal gradient */
-        color: white;
-        width: 100%;
-        padding: 12px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 1rem;
-        font-weight: 600;
-        margin-top: 10px;
-        box-shadow: 0 4px 15px rgba(22, 160, 133, 0.2);
-        transition: all 0.2s ease-in-out;
-    }
-    
-    .submit-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(22, 160, 133, 0.3);
-    }
-
-    @keyframes slideIn {
-        from {
-            opacity: 0;
-            transform: translateY(-20px);
+        body {
+            font-family: 'Poppins', sans-serif;
         }
-        to {
-            opacity: 1;
-            transform: translateY(0);
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(44, 62, 80, 0.7);
+            /* Dark, desaturated overlay */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
         }
-    }
-</style>
 
-<!-- JavaScript (Correct and Unchanged) -->
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const modal = document.getElementById("appointmentModal");
-        const closeBtn = document.getElementById("closeModalBtn");
-
-        if (modal && closeBtn) {
-            // Show modal on page load
-            modal.style.display = "flex";
-
-            const closeModal = () => {
-                modal.style.display = "none";
-            };
-
-            // Close modal when 'X' is clicked
-            closeBtn.addEventListener("click", closeModal);
-
-            // Close modal when clicking outside
-            window.addEventListener("click", (event) => {
-                if (event.target === modal) {
-                    closeModal();
-                }
-            });
+        .modal-content {
+            background-color: #ffffff;
+            margin: auto;
+            padding: 25px 30px;
+            border-radius: 12px;
+            /* Softer radius */
+            width: 100%;
+            max-width: 380px;
+            /* Compact size */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: slideIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
-    });
-</script>
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e0e6ed;
+            padding-bottom: 15px;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            /* Dark charcoal text */
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: #95a5a6;
+            /* Light grey */
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .close-btn:hover {
+            color: #2c3e50;
+            transform: rotate(90deg);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #34495e;
+            /* Muted dark blue/grey */
+        }
+
+        .form-group .optional {
+            color: #7f8c8d;
+            /* Lighter grey for optional text */
+            font-weight: 400;
+        }
+
+        .modal-content input,
+        .modal-content select,
+        .modal-content textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1px solid #dce4ec;
+            background-color: #f7f9fb;
+            /* Soft off-white background */
+            font-size: 0.95rem;
+            color: #2c3e50;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .modal-content input::placeholder,
+        .modal-content textarea::placeholder {
+            color: #95a5a6;
+        }
+
+        .modal-content input:focus,
+        .modal-content select:focus,
+        .modal-content textarea:focus {
+            outline: none;
+            border-color: #1abc9c;
+            /* Teal focus color */
+            box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.15);
+            background-color: #fff;
+        }
+
+        .modal-content select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%237f8c8d"%3E%3Cpath d="M7 10l5 5 5-5H7z"/%3E%3C/svg%3E');
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            background-size: 20px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(to right, #16a085, #1abc9c);
+            /* Teal gradient */
+            color: white;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(22, 160, 133, 0.2);
+            transition: all 0.2s ease-in-out;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(22, 160, 133, 0.3);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+    <!-- JavaScript (Correct and Unchanged) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const modal = document.getElementById("appointmentModal");
+            const closeBtn = document.getElementById("closeModalBtn");
+
+            if (modal && closeBtn) {
+                // Show modal on page load
+                modal.style.display = "flex";
+
+                const closeModal = () => {
+                    modal.style.display = "none";
+                };
+
+                // Close modal when 'X' is clicked
+                closeBtn.addEventListener("click", closeModal);
+
+                // Close modal when clicking outside
+                window.addEventListener("click", (event) => {
+                    if (event.target === modal) {
+                        closeModal();
+                    }
+                });
+            }
+        });
+    </script>
     <!-- end appointment pop up  -->
     <!-- Carousel Start -->
     <div class="container-fluid p-0 mb-6 wow fadeIn" data-wow-delay="0.1s">
@@ -616,7 +649,8 @@
                         <h1 class="display-6 text-white text-uppercase mb-4 wow fadeIn" data-wow-delay="0.3s">Why You
                             should Choose Our <br>SA Electricals.</h1>
                         <p class="text-light mb-4 wow fadeIn" data-wow-delay="0.4s">Since 1980, S.A. Electricals has
-                            built a legacy of excellence as a <strong>Class 1 government-licensed electrical contractor</strong>. We
+                            built a legacy of excellence as a <strong>Class 1 government-licensed electrical
+                                contractor</strong>. We
                             power residential, commercial, and industrial projects with an unwavering commitment to
                             superior safety and flawless execution, delivering results engineered to last and a standard
                             of quality you can trust.</p>
@@ -732,90 +766,91 @@
         }
     </style>
     <div
-    style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: auto; width: 70%; margin-top: 3rem; margin-bottom: 3rem;">
-    <h1>
-        Our Core Services [M.E.P.F] & More
-    </h1>
-    <p>
-        We provide end-to-end MEPF solutions, ensuring efficient mechanical, electrical, plumbing, and fire safety
-        systems with expert planning, seamless execution, and strict adherence to safety standards and deadlines.
-    </p>
-</div>
-
-<!-- This is the container for all your cards -->
-<div class="health-container">
-
-    <!-- Card 1: Mechanical -->
-    <div class="flip-card">
-        <div class="flip-card-inner">
-            <div class="flip-card-front">
-                <h1>Mechanical</h1>
-            </div>
-            <div style="display: flex; flex-direction: column;" class="flip-card-back">
-                <p>We deliver reliable mechanical solutions with precision engineering, on-time execution, and a
-                    strong focus on safety and performance.
-                </p>
-                <a style="background-color: white; padding: .5rem;" href="service.html"><span>know more</span></a>
-            </div>
-        </div>
+        style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: auto; width: 70%; margin-top: 3rem; margin-bottom: 3rem;">
+        <h1>
+            Our Core Services [M.E.P.F] & More
+        </h1>
+        <p>
+            We provide end-to-end MEPF solutions, ensuring efficient mechanical, electrical, plumbing, and fire safety
+            systems with expert planning, seamless execution, and strict adherence to safety standards and deadlines.
+        </p>
     </div>
 
-    <!-- Card 2: Electrical -->
-    <div class="flip-card">
-        <div class="flip-card-inner">
-            <div class="flip-card-front">
-                <h1>Electrical</h1>
-            </div>
-            <div style="display: flex; flex-direction: column;" class="flip-card-back">
-                <p>We provide efficient electrical solutions with certified expertise, ensuring timely completion,
-                    safety, and high-quality performance every time.</p>
-                <a style="background-color: white; padding: .5rem;" href="service.html"><span>know more</span></a>
+    <!-- This is the container for all your cards -->
+    <div class="health-container">
+
+        <!-- Card 1: Mechanical -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <h1>Mechanical</h1>
+                </div>
+                <div style="display: flex; flex-direction: column;" class="flip-card-back">
+                    <p>We deliver reliable mechanical solutions with precision engineering, on-time execution, and a
+                        strong focus on safety and performance.
+                    </p>
+                    <a style="background-color: white; padding: .5rem;" href="service.html"><span>know more</span></a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Card 3: Plumbing -->
-    <div class="flip-card">
-        <div class="flip-card-inner">
-            <div class="flip-card-front">
-                <h1>Plumbing</h1>
-            </div>
-            <div style="display: flex; flex-direction: column;" class="flip-card-back">
-                <p>We offer reliable plumbing solutions with expert installation, quick service, and lasting quality
-                    for all your residential and commercial needs.</p>
-                <a style="background-color: white; padding: .5rem;" href="service.html"><span>know more</span></a>
+        <!-- Card 2: Electrical -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <h1>Electrical</h1>
+                </div>
+                <div style="display: flex; flex-direction: column;" class="flip-card-back">
+                    <p>We provide efficient electrical solutions with certified expertise, ensuring timely completion,
+                        safety, and high-quality performance every time.</p>
+                    <a style="background-color: white; padding: .5rem;" href="service.html"><span>know more</span></a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Card 4: Fire Safety -->
-    <div class="flip-card">
-        <div class="flip-card-inner">
-            <div class="flip-card-front">
-                <h1>Fire Safety</h1>
-            </div>
-            <div style="display: flex; flex-direction: column;" class="flip-card-back">
-                <p>We provide certified fire safety solutions, ensuring protection through expert installation,
-                    timely service, and full compliance with safety regulations.</p>
-                <a style="background-color: white; padding: .5rem;" href="service.html"><span>know more</span></a>
+        <!-- Card 3: Plumbing -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <h1>Plumbing</h1>
+                </div>
+                <div style="display: flex; flex-direction: column;" class="flip-card-back">
+                    <p>We offer reliable plumbing solutions with expert installation, quick service, and lasting quality
+                        for all your residential and commercial needs.</p>
+                    <a style="background-color: white; padding: .5rem;" href="service.html"><span>know more</span></a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Card 5: Other Services (NEW) -->
-    <div class="flip-card">
-        <div class="flip-card-inner">
-            <div class="flip-card-front">
-                <h1>Other Services</h1>
-            </div>
-            <div style="display: flex; flex-direction: column;" class="flip-card-back">
-                <p>We provide integrated low-voltage solutions, including CCTV, networking, UPS installation, and comprehensive electrical audits to support modern infrastructure.</p>
-                <a style="background-color: white; padding: .5rem;" href="service.html"><span>know more</span></a>
+        <!-- Card 4: Fire Safety -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <h1>Fire Safety</h1>
+                </div>
+                <div style="display: flex; flex-direction: column;" class="flip-card-back">
+                    <p>We provide certified fire safety solutions, ensuring protection through expert installation,
+                        timely service, and full compliance with safety regulations.</p>
+                    <a style="background-color: white; padding: .5rem;" href="service.html"><span>know more</span></a>
+                </div>
             </div>
         </div>
-    </div>
 
-</div> <br>
+        <!-- Card 5: Other Services (NEW) -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <h1>Other Services</h1>
+                </div>
+                <div style="display: flex; flex-direction: column;" class="flip-card-back">
+                    <p>We provide integrated low-voltage solutions, including CCTV, networking, UPS installation, and
+                        comprehensive electrical audits to support modern infrastructure.</p>
+                    <a style="background-color: white; padding: .5rem;" href="service.html"><span>know more</span></a>
+                </div>
+            </div>
+        </div>
+
+    </div> <br>
 
 
 
